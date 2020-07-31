@@ -1,0 +1,37 @@
+<!-- <div [ngClass]="cardClass">
+  <div class="card-header">
+    <div class="container">
+      <div class="row justify-content-end">
+        <span class="badge badge-dark">{{ link.language }}</span>
+      </div>
+    </div>
+  </div>
+  <img class="card-img-top" [src]="photo" alt="photo" />
+  <div class="card-body">
+    <h5 class="card-title">{{ link.title }}</h5>
+    <p class="card-text">{{ link.description }}</p>
+  </div>
+  <div class="card-footer">
+    <a class="btn btn-outline-primary" [routerLink]="link.route">Read it</a>
+  </div>
+</div> -->
+
+<div class="row pb-5 blog-post">
+  <div class="col-lg-4 mb-md-3 mb-sm-3">
+    <a [routerLink]="link.route">
+      <img class="card-img-top mb-2" [src]="photo" alt="photo" />
+    </a>
+    <small> {{ link.date | date }}</small>
+    <span class="badge badge-dark float-right"> {{ link.language }}</span>
+  </div>
+  <div class="col-lg-8">
+    <a [routerLink]="link.route" class="mb-2">
+      <h3>
+        {{ link.title }}
+      </h3>
+    </a>
+    <p>
+      {{ link.description }}
+    </p>
+  </div>
+</div>

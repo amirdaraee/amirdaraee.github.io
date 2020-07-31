@@ -1,0 +1,82 @@
+*,
+*:after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.start-header {
+  padding: 10px 0;
+}
+.navigation-wrap {
+  width: 100%;
+  z-index: 1000;
+}
+.navbar {
+  padding: 0;
+}
+.navbar-brand img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+.nav-link {
+  color: #212121 !important;
+  font-weight: 500;
+}
+.nav-item.active .nav-link {
+  color: #777 !important;
+}
+.nav-item {
+  position: relative;
+}
+.nav-item .nav-link {
+  position: relative;
+  display: inline-block;
+  padding-right: 0;
+  padding-left: 0;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.nav-item .nav-link:hover,
+.nav-item .nav-link:focus {
+  outline: none;
+}
+
+/* Effect 1: Brackets */
+.cl-effect-1 a::before,
+.cl-effect-1 a::after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 a::before {
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.cl-effect-1 a::after {
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+
+.cl-effect-1 a:hover::before,
+.cl-effect-1 a:hover::after,
+.cl-effect-1 a:focus::before,
+.cl-effect-1 a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
