@@ -14,5 +14,4 @@ jobs:
       - uses: actions/checkout@v2
         
       - uses: cmgriffing/scully-gh-pages-action@v9
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
+
