@@ -5,7 +5,8 @@ import { pluginTypes } from '@scullyio/scully/lib/pluginManagement/pluginReposit
 
 const { DisableAngular } = require('scully-plugin-disable-angular');
 const postRenderers = [DisableAngular];
-setPluginConfig('md', pluginTypes[2], { enableSyntaxHighlighting: true });
+// setPluginConfig('md', pluginTypes[2], { enableSyntaxHighlighting: true });
+setPluginConfig('md',  { enableSyntaxHighlighting: true });
 setPluginConfig(DisableAngular, 'render', {removeState: true});
 
 export const config: ScullyConfig = {
