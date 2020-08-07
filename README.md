@@ -1,3 +1,4 @@
+![Scully Publish](https://github.com/amirdaraee/amirdaraee.github.io/workflows/Scully%20Publish/badge.svg?branch=develop)
 
 # SoloCodingBlog
 
