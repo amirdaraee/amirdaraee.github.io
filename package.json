@@ -1,5 +1,5 @@
 {
-  "name": "solo-coding-blog",
+  "name": "amirdaraee-blog",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,7 +12,7 @@
     "scully:serve": "scully serve",
     "buildscully": "npm run build -- --prod --stats-json && npm run scully -- --scanRoutes --showGuessError",
     "scanscully": "npm run scully -- --scanRoutes --showGuessError",
-    "copy404": "cp dist/soloCoding-blog/index.html dist/soloCoding-blog/404.html",
+    "copy404": "cp dist/amirdaraee-blog/index.html dist/amirdaraee-blog/404.html",
     "moveToDocs": "mv dist/static/* docs/",
     "buildGithub": "ng build --prod && npm run copy404 && npm run scanscully && npm run moveToDocs"
   },
