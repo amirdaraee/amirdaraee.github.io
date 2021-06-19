@@ -1,0 +1,19 @@
+<div class="row pb-5 blog-post">
+    <div class="col-lg-4 mb-md-3 mb-sm-3">
+      <a [routerLink]="link.route">
+        <img class="card-img-top mb-2" [src]="photo" alt="photo" />
+      </a>
+      <small> {{ link.date | date }}</small>
+      <span class="badge badge-dark float-right"> {{ link.language }}</span>
+    </div>
+    <div class="col-lg-8">
+      <a [routerLink]="link.route" class="mb-2">
+        <h3>
+          {{ link.title }}
+        </h3>
+      </a>
+      <p>
+        {{ link.description }}
+      </p>
+    </div>
+  </div>

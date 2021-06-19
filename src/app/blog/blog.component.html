@@ -1,0 +1,85 @@
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <!-- Title -->
+        <h1 class="mt-4">{{post.title}}</h1>
+  
+        <!-- Author -->
+        <p class="lead text-monospace">
+          by
+          <a [routerLink]="'/about'">{{post.author}}</a>
+        </p>
+        <hr />
+  
+        <!-- Date/Time -->
+        <p>Posted on {{post.date |date:'dd/LL'}}</p>
+        <hr />
+  
+        <!-- Preview Image -->
+        <figure class="figure">
+            <img class="col-12" [src]="post.photo" alt="">
+            <figcaption class="figure-caption text-right" *ngIf="post.imgCredit">credit:
+                {{post.imgCredit}}</figcaption>
+        </figure>
+        <hr />
+        <!-- Post Content -->
+        <scully-content></scully-content>
+        <hr />
+      </div>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4 mb-4 mt-4">
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row justify-content-around">
+              <div class="col-xs-1">
+                <ul class="list-unstyled mt-1">
+                  <li>
+                    <a
+                      class="btn btn-outline-danger"
+                      [routerLink]="['/posts/angular']"
+                      >Angular</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-1">
+                <ul class="list-unstyled mt-1">
+                  <li>
+                    <a
+                      class="btn btn-outline-success"
+                      [routerLink]="['/posts/spring']"
+                      >Spring</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-1">
+                <ul class="list-unstyled mt-1">
+                  <li>
+                    <a
+                      class="btn btn-outline-info"
+                      [routerLink]="['/posts/devops']"
+                      >Devops</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-1">
+                <ul class="list-unstyled mt-1">
+                  <li>
+                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']"
+                      >All</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
