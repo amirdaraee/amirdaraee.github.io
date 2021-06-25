@@ -2,13 +2,13 @@ published: false
 title:
 description:
 date:
-author: Bassem
+author: Amirdaraee
 slug: eng_
 photo: assets/postPhoto.png
 imgCredit: amirdaraee.com
 keywords:
   - angular
-  - spring
+  - typescript
 language: en
 output:
   html_document:
