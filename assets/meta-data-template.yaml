@@ -1,0 +1,15 @@
+published: false
+title:
+description:
+date:
+author: Amirdaraee
+slug: eng_
+photo: assets/postPhoto.png
+imgCredit: amirdaraee.com
+keywords:
+  - angular
+  - typescript
+language: en
+output:
+  html_document:
+    css: post-details.component.css
