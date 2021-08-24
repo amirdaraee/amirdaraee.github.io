@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en" class="h-100"><head><meta name="generator" content="Scully 1.0.9">
+    <meta charset="utf-8">
+    <title>ASP.NET Core Interview Question: What is startup class?</title>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@amirdaraee">
+    <meta name="twitter:title" content="ASP.NET Core Interview Question: What is startup class?">
+    <meta name="twitter:description" content="At the heart of every ASP.NET lies the startup class">
+    <meta name="twitter:creator" content="@amirdaraee">
+    <meta name="twitter:url" content="https://amirdaraee.com/blog/what_is_startup_class">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:image" content="https://amirdaraee.com/assets/stock/start-stop-engine-car.jpg">
+    <meta name="description" content="At the heart of every ASP.NET lies the startup class">
+    <meta name="image" content="https://amirdaraee.com/assets/stock/start-stop-engine-car.jpg">
+    <meta name="og:title" property="og:title" content="ASP.NET Core Interview Question: What is startup class?">
+    <meta name="og:description" property="og:description" content="At the heart of every ASP.NET lies the startup class">
+    <meta name="og:type" property="og:type" content="article">
+    <meta name="article:section" property="article:section" content="ASP.NET Core">
+    <meta name="og:url" property="og:url" content="https://amirdaraee.com/blog/what_is_startup_class">
+    <meta name="og:image" property="og:image" content="https://amirdaraee.com/assets/stock/start-stop-engine-car.jpg">
+    <meta name="og:site_name" property="og:site_name" content="amirdaraee">
+
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+  <link rel="stylesheet" href="styles.285abc81f872ad4525b2.css"><style></style><style>*[_ngcontent-hvs-c6], [_ngcontent-hvs-c6]:after, [_ngcontent-hvs-c6]:before{box-sizing:border-box}.start-header[_ngcontent-hvs-c6]{padding:10px 0}.navigation-wrap[_ngcontent-hvs-c6]{width:100%;z-index:1000}.navbar[_ngcontent-hvs-c6]{padding:0}.navbar-brand[_ngcontent-hvs-c6]   img[_ngcontent-hvs-c6]{height:52px;width:auto;display:block}.nav-link[_ngcontent-hvs-c6]{color:#212121!important;font-weight:500}.nav-item.active[_ngcontent-hvs-c6]   .nav-link[_ngcontent-hvs-c6]{color:#777!important}.nav-item[_ngcontent-hvs-c6]{position:relative}.nav-item[_ngcontent-hvs-c6]   .nav-link[_ngcontent-hvs-c6]{position:relative;display:inline-block;padding-right:0;padding-left:0;outline:none;text-decoration:none;text-transform:uppercase;letter-spacing:1px}.nav-item[_ngcontent-hvs-c6]   .nav-link[_ngcontent-hvs-c6]:focus, .nav-item[_ngcontent-hvs-c6]   .nav-link[_ngcontent-hvs-c6]:hover{outline:none}.cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:after, .cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:before{display:inline-block;opacity:0;transition:transform .3s,opacity .2s}.cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:before{margin-right:10px;content:"[";transform:translateX(20px)}.cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:after{margin-left:10px;content:"]";transform:translateX(-20px)}.cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:focus:after, .cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:focus:before, .cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:hover:after, .cl-effect-1[_ngcontent-hvs-c6]   a[_ngcontent-hvs-c6]:hover:before{opacity:1;transform:translateX(0)}</style><style>code[class*=language-][_ngcontent-hvs-c9], pre[class*=language-][_ngcontent-hvs-c9]{color:#c5c8c6;text-shadow:0 1px rgba(0,0,0,.3);font-family:Inconsolata,Monaco,Consolas,Courier New,Courier,monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;hyphens:none}pre[class*=language-][_ngcontent-hvs-c9]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.5em}[_ngcontent-hvs-c9]:not(pre) > code[class*=language-][_ngcontent-hvs-c9], pre[class*=language-][_ngcontent-hvs-c9]{background:#343a40}app-code[_ngcontent-hvs-c9] > pre[_ngcontent-hvs-c9] > code[_ngcontent-hvs-c9]:before, pre[_ngcontent-hvs-c9] > code[_ngcontent-hvs-c9]:before{content:attr(class);text-indent:-9ch;text-transform:uppercase;display:block;padding:2px;margin-bottom:20px;overflow:hidden;font-style:italic}[_ngcontent-hvs-c9]:not(pre) > code[class*=language-][_ngcontent-hvs-c9]{padding:.1em;border-radius:.3em}.token.cdata[_ngcontent-hvs-c9], .token.comment[_ngcontent-hvs-c9], .token.doctype[_ngcontent-hvs-c9], .token.prolog[_ngcontent-hvs-c9]{color:#7c7c7c}.token.punctuation[_ngcontent-hvs-c9]{color:#c5c8c6}.namespace[_ngcontent-hvs-c9]{opacity:.7}.token.keyword[_ngcontent-hvs-c9], .token.property[_ngcontent-hvs-c9], .token.tag[_ngcontent-hvs-c9]{color:#96cbfe}.token.class-name[_ngcontent-hvs-c9]{color:#ffffb6;text-decoration:none}.token.boolean[_ngcontent-hvs-c9], .token.constant[_ngcontent-hvs-c9]{color:#9c9}.token.deleted[_ngcontent-hvs-c9], .token.symbol[_ngcontent-hvs-c9]{color:#f92672}.token.number[_ngcontent-hvs-c9]{color:#ff73fd}.token.attr-name[_ngcontent-hvs-c9], .token.builtin[_ngcontent-hvs-c9], .token.char[_ngcontent-hvs-c9], .token.inserted[_ngcontent-hvs-c9], .token.selector[_ngcontent-hvs-c9], .token.string[_ngcontent-hvs-c9]{color:#a8ff60}.token.variable[_ngcontent-hvs-c9]{color:#c6c5fe}.token.operator[_ngcontent-hvs-c9]{color:#ededed}.token.entity[_ngcontent-hvs-c9]{color:#ffffb6;cursor:help}.token.url[_ngcontent-hvs-c9]{color:#96cbfe}.language-css[_ngcontent-hvs-c9]   .token.string[_ngcontent-hvs-c9], .style[_ngcontent-hvs-c9]   .token.string[_ngcontent-hvs-c9]{color:#87c38a}.token.atrule[_ngcontent-hvs-c9], .token.attr-value[_ngcontent-hvs-c9]{color:#f9ee98}.token.function[_ngcontent-hvs-c9]{color:#dad085}.token.regex[_ngcontent-hvs-c9]{color:#e9c062}.token.important[_ngcontent-hvs-c9]{color:#fd971f}.token.bold[_ngcontent-hvs-c9], .token.important[_ngcontent-hvs-c9]{font-weight:700}.token.italic[_ngcontent-hvs-c9]{font-style:italic}</style><style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style><script>window['ScullyIO']='generated';</script><script>window.ScullyIOAngularDisabled = true;</script></head>
+
+  <body class="h-100" scully-version="1.0.9">
+    <app-root class="d-flex flex-column h-100" _nghost-hvs-c8="" ng-version="11.0.5"><app-header _ngcontent-hvs-c8="" _nghost-hvs-c6=""><div _ngcontent-hvs-c6="" class="navigation-wrap bg-white start-header start-style"><div _ngcontent-hvs-c6="" class="container"><div _ngcontent-hvs-c6="" class="row"><div _ngcontent-hvs-c6="" class="col-12"><nav _ngcontent-hvs-c6="" class="navbar navbar-light navbar-expand"><a _ngcontent-hvs-c6="" class="navbar-brand" href="/"><img _ngcontent-hvs-c6="" src="assets/logo.png" alt=""></a><div _ngcontent-hvs-c6="" id="navbarSupportedContent" class="collapse navbar-collapse cl-effect-1"><ul _ngcontent-hvs-c6="" class="navbar-nav ml-auto py-4 py-md-0"><li _ngcontent-hvs-c6="" class="nav-item"><a _ngcontent-hvs-c6="" class="nav-link" href="/posts">Blog</a></li><li _ngcontent-hvs-c6="" class="nav-item"><a _ngcontent-hvs-c6="" class="nav-link" href="/portfolio">Portfolio</a></li><li _ngcontent-hvs-c6="" class="nav-item"><a _ngcontent-hvs-c6="" class="nav-link" href="/about">About</a></li><li _ngcontent-hvs-c6="" class="nav-item"><a _ngcontent-hvs-c6="" class="nav-link" href="/uses">Uses</a></li></ul></div></nav></div></div></div></div></app-header><section _ngcontent-hvs-c8="" class="container-fluid"><router-outlet _ngcontent-hvs-c8=""></router-outlet><app-blog _nghost-hvs-c9="">
+<div _ngcontent-hvs-c9="" class="container">
+    <div _ngcontent-hvs-c9="" class="row">
+      
+      <div _ngcontent-hvs-c9="" class="col-lg-8">
+        
+        <h1 _ngcontent-hvs-c9="" class="mt-4">ASP.NET Core Interview Question: What is startup class?</h1>
+  
+        
+        <p _ngcontent-hvs-c9="" class="lead text-monospace">
+          by
+          <a _ngcontent-hvs-c9="" href="/about">amirdaraee</a>
+        </p>
+        <hr _ngcontent-hvs-c9="">
+  
+        
+        <p _ngcontent-hvs-c9="">Posted on 24/08</p>
+        <hr _ngcontent-hvs-c9="">
+  
+        
+        <figure _ngcontent-hvs-c9="" class="figure">
+            <img _ngcontent-hvs-c9="" alt="" class="col-12" src="assets/stock/start-stop-engine-car.jpg">
+            <figcaption _ngcontent-hvs-c9="" class="figure-caption text-right">credit:
+                pxfuel.com</figcaption><!---->
+        </figure>
+        <hr _ngcontent-hvs-c9="">
+        
+        <!--scullyContent-begin--><h1 id="aspnet-core-interview-question-what-is-startup-class" _ngcontent-hvs-c9="">ASP.NET Core Interview Question: What is startup class</h1>
+<p _ngcontent-hvs-c9="">At the heart of every ASP.NET Core projects lies the startup class. Basicly it's the starting point of your application and as a developer we will need to make changes to this class pretty often.</p>
+<p _ngcontent-hvs-c9="">There are some notable methods in startup class:</p>
+<p _ngcontent-hvs-c9=""><strong _ngcontent-hvs-c9="">1- Constructor:</strong> It takes an IConfiguration value which will give us access to settings in appSettings.json and appSettings.Development.json.</p>
+<pre class="language-csharp" _ngcontent-hvs-c9=""><code class="language-csharp" _ngcontent-hvs-c9="">public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+}</code></pre><p _ngcontent-hvs-c9=""><strong _ngcontent-hvs-c9="">2- ConfigureServices:</strong> It takes an IServiceCollection value which will allow us to register frameworks and dependencies.</p>
+<pre class="language-csharp" _ngcontent-hvs-c9=""><code class="language-csharp" _ngcontent-hvs-c9="">// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<applicationdbcontext _ngcontent-hvs-c9="">(options =&gt;
+        options.UseSqlServer(
+            Configuration.GetConnectionString("DefaultConnection")));
+    services.AddDatabaseDeveloperPageExceptionFilter();
+    services.AddDefaultIdentity<identityuser _ngcontent-hvs-c9="">(options =&gt; options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<applicationdbcontext _ngcontent-hvs-c9="">();
+    services.AddControllersWithViews();
+}</applicationdbcontext></identityuser></applicationdbcontext></code></pre><p _ngcontent-hvs-c9=""><strong _ngcontent-hvs-c9="">3- Configure Method:</strong> It takes IApplicationBuilder and IWebHostEnvironment which will help us setup our runtime request pipeline.</p>
+<pre class="language-csharp" _ngcontent-hvs-c9=""><code class="language-csharp" _ngcontent-hvs-c9="">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseMigrationsEndPoint();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Home/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseEndpoints(endpoints =&gt;
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapRazorPages();
+    });
+}</code></pre><!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:"_ngcontent-hvs-c9",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content _ngcontent-hvs-c9=""></scully-content>
+        <hr _ngcontent-hvs-c9="">
+      </div>
+      
+      <div _ngcontent-hvs-c9="" class="col-md-4 mb-4 mt-4">
+        
+        <div _ngcontent-hvs-c9="" class="card my-4">
+          <h5 _ngcontent-hvs-c9="" class="card-header">Categories</h5>
+          <div _ngcontent-hvs-c9="" class="card-body">
+            <div _ngcontent-hvs-c9="" class="row justify-content-around">
+              <div _ngcontent-hvs-c9="" class="col-xs-1">
+                <ul _ngcontent-hvs-c9="" class="list-unstyled mt-1">
+                  <li _ngcontent-hvs-c9="">
+                    <a _ngcontent-hvs-c9="" class="btn btn-outline-danger" href="/posts/angular">Angular</a>
+                  </li>
+                </ul>
+              </div>
+              <div _ngcontent-hvs-c9="" class="col-xs-1">
+                <ul _ngcontent-hvs-c9="" class="list-unstyled mt-1">
+                  <li _ngcontent-hvs-c9="">
+                    <a _ngcontent-hvs-c9="" class="btn btn-outline-primary" href="/posts/typescript">Typescript</a>
+                  </li>
+                </ul>
+              </div>
+              <div _ngcontent-hvs-c9="" class="col-xs-1">
+                <ul _ngcontent-hvs-c9="" class="list-unstyled mt-1">
+                  <li _ngcontent-hvs-c9="">
+                    <a _ngcontent-hvs-c9="" class="btn btn-outline-primary" href="/posts/csharp">C#</a>
+                  </li>
+                </ul>
+              </div>
+              <div _ngcontent-hvs-c9="" class="col-xs-1">
+                <ul _ngcontent-hvs-c9="" class="list-unstyled mt-1">
+                  <li _ngcontent-hvs-c9="">
+                    <a _ngcontent-hvs-c9="" class="btn btn-outline-primary" href="/posts/dotnet">.Net</a>
+                  </li>
+                </ul>
+              </div>
+              <div _ngcontent-hvs-c9="" class="col-xs-1">
+                <ul _ngcontent-hvs-c9="" class="list-unstyled mt-1">
+                  <li _ngcontent-hvs-c9="">
+                    <a _ngcontent-hvs-c9="" class="btn btn-outline-secondary" href="/posts">All</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></app-blog><!----></section><app-footer _ngcontent-hvs-c8="" class="mt-auto" _nghost-hvs-c7=""><footer _ngcontent-hvs-c7="" id="footer" class="d-flex-column text-center"><div _ngcontent-hvs-c7="" class="text-center"><h4 _ngcontent-hvs-c7="">You can find me at</h4><ul _ngcontent-hvs-c7="" class="list-unstyled list-inline"><li _ngcontent-hvs-c7="" class="list-inline-item"><a _ngcontent-hvs-c7="" href="https://github.com/amirdaraee" target="_blank" title="Github" class="sbtn btn-large mx-1"><i _ngcontent-hvs-c7="" aria-hidden="true" class="fa fa-github fa-2x"></i></a></li><li _ngcontent-hvs-c7="" class="list-inline-item"><a _ngcontent-hvs-c7="" href="https://www.linkedin.com/in/amirdaraee" target="_blank" title="Linkedin" class="sbtn btn-large mx-1"><i _ngcontent-hvs-c7="" aria-hidden="true" class="fa fa-linkedin fa-2x"></i></a></li><li _ngcontent-hvs-c7="" class="list-inline-item"><a _ngcontent-hvs-c7="" href="https://twitter.com/amirdaraee" target="_blank" title="Twitter" class="sbtn btn-large mx-1"><i _ngcontent-hvs-c7="" aria-hidden="true" class="fa fa-twitter fa-2x"></i></a></li><li _ngcontent-hvs-c7="" class="list-inline-item"><a _ngcontent-hvs-c7="" href="https://www.youtube.com/c/AmirhosseinDaraee" target="_blank" title="Youtube" class="sbtn btn-large mx-1"><i _ngcontent-hvs-c7="" aria-hidden="true" class="fa fa-youtube-play fa-2x"></i></a></li></ul></div><hr _ngcontent-hvs-c7="" class="mb-0"><div _ngcontent-hvs-c7="" class="py-3 text-center"> Copyright 2021 <a _ngcontent-hvs-c7="" href="https://amirdaraee.com">amirdaraee</a></div></footer></app-footer></app-root>
+  
+
+</body></html>
