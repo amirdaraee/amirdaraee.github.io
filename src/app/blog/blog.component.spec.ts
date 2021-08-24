@@ -13,7 +13,7 @@ describe('BlogComponent', () => {
   beforeEach(() => {
     const link = {
       keywords:['angular']
-    }
+    };
 
     const scully = jasmine.createSpyObj('ScullyRoutesService', ['getCurrent']);
     getScullySpy = scully.getCurrent.and.returnValue(of(link));

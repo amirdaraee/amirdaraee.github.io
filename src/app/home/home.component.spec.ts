@@ -14,10 +14,10 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     const link = {
       keywords:['angular']
-    }
-    // Create a fake 
+    };
+    // Create a fake
     const scully = jasmine.createSpyObj('ScullyRoutesService', ['available$']);
-    // Make the spy return a synchronous Observable 
+    // Make the spy return a synchronous Observable
     getScullySpy = scully.available$.and.returnValue(of(link));
 
     TestBed.configureTestingModule({

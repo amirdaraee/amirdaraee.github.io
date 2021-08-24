@@ -8,8 +8,8 @@ import { Observable} from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  links$ :Observable<any>;
+
+  links$: Observable<any>;
 
   constructor(private scully: ScullyRoutesService) {
     this.links$  = scully.available$;
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   currentTag(link: any): boolean {
     if (link.keywords) {
       return true;
-    } else {return false}
+    } else {return false;}
   }
 
   sortDateFunc(a: any, b: any): number{

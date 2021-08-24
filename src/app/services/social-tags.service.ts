@@ -9,6 +9,12 @@ import { filter, map } from 'rxjs/operators';
 })
 export class SocialTagsService {
 
+  readonly tagDescription: string = 'A blog about programming and software development';
+  readonly tagImage: string = 'assets/logo.png';
+  readonly urlPrefix: string = 'https://amirdaraee.com';
+  readonly siteName: string = 'amirdaraee';
+  readonly userTwitter: string = '@amirdaraee';
+
   public constructor(private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -16,11 +22,6 @@ export class SocialTagsService {
     private meta: Meta) {
     }
 
-  readonly tagDescription: string = 'A blog about programming and software development';
-  readonly tagImage: string = 'assets/logo.png';
-  readonly urlPrefix: string = 'https://amirdaraee.com';
-  readonly siteName: string = 'amirdaraee';
-  readonly userTwitter: string = '@amirdaraee';
 
   setTitleAndTags() {
     this.router.events.pipe(

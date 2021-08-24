@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { SocialTagsService } from './services/social-tags.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import {RouterTestingModule} from '@angular/router/testing' 
+import {RouterTestingModule} from '@angular/router/testing';
 import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
@@ -13,7 +13,7 @@ describe('AppComponent', () => {
 
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [ 
+        imports: [
           RouterTestingModule,
           RouterModule
         ],

@@ -8,15 +8,15 @@ import { ScullyRoute } from '@scullyio/ng-lib';
 })
 export class PostComponent implements OnInit {
 
-  @Input() link:ScullyRoute
-  @Input() photo:string
+  @Input() link: ScullyRoute;
+  @Input() photo: string;
   cardClassArr: string[] = ['card h-100 border-secondary', 'card h-100 border-primary', 'card h-100 border-success',
-  'card h-100 border-danger', 'card h-100 border-info', 'card h-100 border-dark'  ]
-  cardClass: string
+  'card h-100 border-danger', 'card h-100 border-info', 'card h-100 border-dark'  ];
+  cardClass: string;
   constructor() {}
 
   ngOnInit(): void {
-    this.cardClass = this.cardClassArr[Math.floor(Math.random()*this.cardClassArr.length)]
+    this.cardClass = this.cardClassArr[Math.floor(Math.random()*this.cardClassArr.length)];
   }
 
 }
