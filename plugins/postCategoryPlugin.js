@@ -4,6 +4,8 @@ const postCategoryPlugin = async (route, config = {}) => {
   return ([
     {route: '/posts/typescript'},
     {route: '/posts/angular'},
+    {route: '/posts/csharp'},
+    {route: '/posts/dotnet'},
     {route: '/posts/fa'},
     {route: '/posts/fa_typescript'},
     {route: '/posts/fa_angular'}
