@@ -1,0 +1,39 @@
+name: Astro Deploy
+
+on:
+  push:
+    branches:
+      - claude/modernize-blog-stack-011CUrd81ZFx4RFutZ6SUu9w
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: astro-blog/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd astro-blog
+          npm ci
+
+      - name: Build Astro site
+        run: |
+          cd astro-blog
+          npm run build
+
+      - name: Commit and push to docs folder
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Deploy Astro build to docs folder"
+          git push
