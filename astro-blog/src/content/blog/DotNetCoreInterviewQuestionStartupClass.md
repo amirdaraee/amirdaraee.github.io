@@ -5,7 +5,7 @@ published: true
 date: 2021-08-24T20:35:00.000Z
 author: amirdaraee
 slug: "what_is_startup_class"
-photo: assets/stock/start-stop-engine-car.jpg
+photo: stock/start-stop-engine-car.jpg
 imgCredit: pxfuel.com
 keywords:
   - ASP.NET Core
