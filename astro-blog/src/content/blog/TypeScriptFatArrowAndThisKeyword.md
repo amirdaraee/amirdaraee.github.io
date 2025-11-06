@@ -5,7 +5,7 @@ published: true
 date: 2021-06-25T12:18:00.000Z
 author: amirdaraee
 slug: 'typescript_fatarrow_and_this_keyword'
-photo: assets/stock/this-typescript.png
+photo: stock/this-typescript.png
 imgCredit: valentinog.com
 keywords:
     - typescript
