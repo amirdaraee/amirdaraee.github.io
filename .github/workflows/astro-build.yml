@@ -1,0 +1,55 @@
+name: Build Astro Site (Optional)
+
+# This workflow is OPTIONAL - you can build and deploy manually if you prefer.
+# It automatically rebuilds the site when you push source code changes.
+#
+# Manual workflow (recommended):
+# 1. cd astro-blog && npm run build
+# 2. git add . && git commit -m "..." && git push
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'astro-blog/**'
+      - '.github/workflows/astro-build.yml'
+
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: astro-blog/package-lock.json
+
+      - name: Install dependencies
+        working-directory: astro-blog
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: astro-blog
+        run: npm run build
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet docs/ || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push built files
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git commit -m "🤖 Auto-build: Update docs from astro-blog changes"
+          git push
