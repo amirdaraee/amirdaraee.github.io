@@ -3,8 +3,7 @@ name: Astro Deploy
 on:
   push:
     branches:
-      - claude/modernize-blog-stack-011CUrd81ZFx4RFutZ6SUu9w
-      - main
+      - develop
 
 jobs:
   build-and-deploy:
