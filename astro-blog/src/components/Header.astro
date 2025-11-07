@@ -6,12 +6,23 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <nav class="navbar navbar-light navbar-expand">
+        <nav class="navbar navbar-light navbar-expand-md">
           <a class="navbar-brand" href="/">
             <img src="/logo.png" alt="amirdaraee" />
           </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse cl-effect-1" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto py-4 py-md-0">
+            <ul class="navbar-nav ms-auto py-4 py-md-0">
               <li class="nav-item">
                 <a class="nav-link" href="/blog">Blog</a>
               </li>
@@ -114,5 +125,27 @@
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .navbar-nav {
+    text-align: center;
+  }
+  .nav-item {
+    padding: 0.5rem 0;
+  }
+  .navbar-toggler {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0.75rem;
+  }
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  /* Disable bracket effect on mobile for cleaner look */
+  .cl-effect-1 a::before,
+  .cl-effect-1 a::after {
+    display: none;
+  }
 }
 </style>
