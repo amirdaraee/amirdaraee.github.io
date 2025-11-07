@@ -5,7 +5,7 @@ published: true
 date: 2025-11-07T10:00:00.000Z
 author: amirdaraee
 slug: 'namewise_usage_guide'
-photo: stock/file-organization.jpg
+photo: stock/file-organization.png
 imgCredit: unsplash.com
 keywords:
   - AI
