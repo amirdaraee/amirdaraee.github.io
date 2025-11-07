@@ -1,49 +1,56 @@
 ---
 // Header component
+import DarkModeToggle from './DarkModeToggle.astro';
 ---
 
-<header class="bg-white w-full z-50 py-2">
+<header class="bg-white dark:bg-gray-900 w-full z-50 py-2 transition-colors duration-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <nav class="flex items-center justify-between">
       <a href="/" class="flex-shrink-0">
         <img src="/logo.png" alt="amirdaraee" class="h-10 w-auto" />
       </a>
 
-      <!-- Mobile menu button -->
-      <button
-        type="button"
-        class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
-        id="mobile-menu-button"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="sr-only">Open main menu</span>
-        <!-- Hamburger icon -->
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <!-- Close icon (hidden by default) -->
-        <svg class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="close-icon">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <!-- Desktop menu and dark mode toggle -->
+      <div class="hidden md:flex md:items-center md:space-x-1">
+        <div class="flex items-center space-x-1 nav-links">
+          <a href="/blog" class="nav-link">Blog</a>
+          <a href="/portfolio" class="nav-link">Portfolio</a>
+          <a href="/about" class="nav-link">About</a>
+          <a href="/uses" class="nav-link">Uses</a>
+        </div>
+        <DarkModeToggle />
+      </div>
 
-      <!-- Desktop menu -->
-      <div class="hidden md:flex md:items-center md:space-x-1 nav-links">
-        <a href="/blog" class="nav-link">Blog</a>
-        <a href="/portfolio" class="nav-link">Portfolio</a>
-        <a href="/about" class="nav-link">About</a>
-        <a href="/uses" class="nav-link">Uses</a>
+      <!-- Mobile menu button and dark mode toggle -->
+      <div class="md:hidden flex items-center space-x-2">
+        <DarkModeToggle />
+        <button
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:focus:ring-gray-400 transition-colors duration-200"
+          id="mobile-menu-button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close icon (hidden by default) -->
+          <svg class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="close-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </nav>
 
     <!-- Mobile menu (hidden by default) -->
     <div class="hidden md:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 text-center">
-        <a href="/blog" class="block px-3 py-2 text-gray-900 hover:text-gray-600 font-medium uppercase tracking-wide">Blog</a>
-        <a href="/portfolio" class="block px-3 py-2 text-gray-900 hover:text-gray-600 font-medium uppercase tracking-wide">Portfolio</a>
-        <a href="/about" class="block px-3 py-2 text-gray-900 hover:text-gray-600 font-medium uppercase tracking-wide">About</a>
-        <a href="/uses" class="block px-3 py-2 text-gray-900 hover:text-gray-600 font-medium uppercase tracking-wide">Uses</a>
+        <a href="/blog" class="block px-3 py-2 text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400 font-medium uppercase tracking-wide transition-colors duration-200">Blog</a>
+        <a href="/portfolio" class="block px-3 py-2 text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400 font-medium uppercase tracking-wide transition-colors duration-200">Portfolio</a>
+        <a href="/about" class="block px-3 py-2 text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400 font-medium uppercase tracking-wide transition-colors duration-200">About</a>
+        <a href="/uses" class="block px-3 py-2 text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400 font-medium uppercase tracking-wide transition-colors duration-200">Uses</a>
       </div>
     </div>
   </div>
@@ -67,40 +74,11 @@
 
 <style>
   .nav-link {
-    @apply relative inline-block px-4 py-2 text-gray-900 font-medium uppercase tracking-wide no-underline transition-colors duration-200;
+    @apply relative inline-block px-4 py-2 text-gray-900 dark:text-gray-100 font-medium uppercase tracking-wide no-underline transition-colors duration-200;
   }
 
   .nav-link:hover {
-    @apply text-gray-600;
-  }
-
-  /* Bracket hover effect */
-  .nav-links .nav-link::before,
-  .nav-links .nav-link::after {
-    display: inline-block;
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.2s;
-  }
-
-  .nav-links .nav-link::before {
-    content: '[';
-    margin-right: 10px;
-    transform: translateX(20px);
-  }
-
-  .nav-links .nav-link::after {
-    content: ']';
-    margin-left: 10px;
-    transform: translateX(-20px);
-  }
-
-<style>
-  .nav-link {
-    @apply relative inline-block px-4 py-2 text-gray-900 font-medium uppercase tracking-wide no-underline transition-colors duration-200;
-  }
-
-  .nav-link:hover {
-    @apply text-gray-600;
+    @apply text-gray-600 dark:text-gray-400;
   }
 
   /* Bracket hover effect */
