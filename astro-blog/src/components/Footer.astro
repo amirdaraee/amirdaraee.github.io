@@ -3,12 +3,14 @@ const currentYear = new Date().getFullYear();
 
 interface Props {
   showCopyright?: boolean;
+  compact?: boolean;
 }
 
-const { showCopyright = true } = Astro.props;
+const { showCopyright = true, compact = false } = Astro.props;
+const paddingClass = compact ? 'py-4' : 'py-8';
 ---
 
-<footer id="footer" class="flex flex-col text-center py-8 bg-gray-50">
+<footer id="footer" class={`flex flex-col text-center ${paddingClass} bg-gray-50`}>
   <!-- Social buttons -->
   <div class="text-center">
     <h4 class="text-xl font-semibold mb-4 text-gray-800">You can find me at</h4>

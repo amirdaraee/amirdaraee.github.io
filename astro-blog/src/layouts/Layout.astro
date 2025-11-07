@@ -12,6 +12,7 @@ interface Props {
   publishedTime?: Date;
   tags?: string[];
   showCopyright?: boolean;
+  compactFooter?: boolean;
 }
 
 const {
@@ -22,7 +23,8 @@ const {
   author,
   publishedTime,
   tags,
-  showCopyright = true
+  showCopyright = true,
+  compactFooter = false
 } = Astro.props;
 ---
 
@@ -66,7 +68,7 @@ const {
     <main class="flex-grow w-full">
       <slot />
     </main>
-    <Footer showCopyright={showCopyright} />
+    <Footer showCopyright={showCopyright} compact={compactFooter} />
   </body>
 </html>
 
