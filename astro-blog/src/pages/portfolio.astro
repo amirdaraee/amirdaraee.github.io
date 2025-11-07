@@ -6,21 +6,21 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Portfolio</h2>
 
-    <div class="flex justify-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- amirdaraee.com project -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden max-w-2xl">
-        <div class="md:flex">
-          <div class="md:flex-shrink-0 md:w-48">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="md:flex md:flex-col">
+          <div class="md:flex-shrink-0">
             <a href="https://amirdaraee.com" target="_blank" rel="noopener noreferrer">
               <img
                 src="/logo.png"
-                class="h-full w-full object-cover md:w-48"
+                class="h-48 w-full object-cover"
                 title="amirdaraee"
                 alt="amirdaraee logo app"
               />
             </a>
           </div>
-          <div class="p-8 bg-gray-50">
+          <div class="p-8 bg-gray-50 flex-1">
             <h5 class="text-2xl font-semibold mb-3 text-gray-900">amirdaraee.com</h5>
             <p class="text-gray-700 mb-3">
               A personal blog about software development and programming, to
@@ -35,6 +35,43 @@ import Layout from '../layouts/Layout.astro';
               <span class="px-3 py-1 bg-red-500 text-white text-sm rounded-full">Astro</span>
               <span class="px-3 py-1 bg-blue-500 text-white text-sm rounded-full">TypeScript</span>
               <span class="px-3 py-1 bg-teal-500 text-white text-sm rounded-full">Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NameWise project -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="md:flex md:flex-col">
+          <div class="md:flex-shrink-0">
+            <a href="https://github.com/amirdaraee/namewise" target="_blank" rel="noopener noreferrer">
+              <div class="h-48 w-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
+                <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="p-8 bg-gray-50 flex-1">
+            <h5 class="text-2xl font-semibold mb-3 text-gray-900">NameWise</h5>
+            <p class="text-gray-700 mb-3">
+              An AI-powered CLI tool that automatically renames files based on their content.
+              It leverages cloud models like Claude and OpenAI, or local LLMs such as Ollama
+              and LMStudio, to generate clean, descriptive filenames.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Designed with privacy and flexibility in mind, NameWise supports multiple file
+              types, customizable templates, and dry-run previews — making file organization
+              smarter, faster, and more intuitive.
+            </p>
+            <p class="text-sm text-gray-500 mb-2">Technology used</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-green-600 text-white text-sm rounded-full">Node.js</span>
+              <span class="px-3 py-1 bg-blue-500 text-white text-sm rounded-full">TypeScript</span>
+              <span class="px-3 py-1 bg-purple-500 text-white text-sm rounded-full">OpenAI</span>
+              <span class="px-3 py-1 bg-indigo-500 text-white text-sm rounded-full">Claude</span>
+              <span class="px-3 py-1 bg-pink-500 text-white text-sm rounded-full">Ollama</span>
+              <span class="px-3 py-1 bg-cyan-500 text-white text-sm rounded-full">LMStudio</span>
             </div>
           </div>
         </div>
