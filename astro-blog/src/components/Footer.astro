@@ -1,5 +1,11 @@
 ---
 const currentYear = new Date().getFullYear();
+
+interface Props {
+  showCopyright?: boolean;
+}
+
+const { showCopyright = true } = Astro.props;
 ---
 
 <footer id="footer" class="flex flex-col text-center py-8 bg-gray-50">
@@ -59,12 +65,16 @@ const currentYear = new Date().getFullYear();
   </div>
   <!-- Social buttons end -->
 
-  <hr class="my-6 border-gray-300 w-full max-w-md mx-auto" />
+  {showCopyright && (
+    <>
+      <hr class="my-6 border-gray-300 w-full max-w-md mx-auto" />
 
-  <!-- Copyright -->
-  <div class="text-gray-600 text-sm">
-    Copyright © {currentYear}
-    <a href="https://amirdaraee.com" class="text-gray-900 hover:text-gray-600 font-medium">amirdaraee</a>
-  </div>
-  <!-- Copyright end -->
+      <!-- Copyright -->
+      <div class="text-gray-600 text-sm">
+        Copyright © {currentYear}
+        <a href="https://amirdaraee.com" class="text-gray-900 hover:text-gray-600 font-medium">amirdaraee</a>
+      </div>
+      <!-- Copyright end -->
+    </>
+  )}
 </footer>
