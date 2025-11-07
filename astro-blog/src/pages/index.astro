@@ -2,20 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Amirdaraee - Full-Stack Web Developer">
-  <div class="container">
-    <main role="main" class="inner cover text-center mt-5">
-      <h1 class="cover-heading">
+<Layout title="Amirdaraee - Full-Stack Web Developer" showCopyright={false} compactFooter={true}>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <main role="main" class="text-center px-4 sm:px-6 lg:px-8">
+      <h1 class="mb-4">
         <img
-          class="rounded-circle"
+          class="rounded-full mx-auto w-48 sm:w-56 md:w-64"
           src="/Amirhossein-Daraee-GIF.gif"
           alt="Amirdaraee"
         />
       </h1>
-      <p class="lead text-justify my-5 mr-md-5 ml-md-5">
-        Hi, My name is Amirhossein and I'm a Full-Stack web developer from Tehran, Iran and this
-        is my spot on the web, where I'm trying to share what I'm learning throughout my
-        daily life, I hope you enjoy it.
+      <p class="text-base md:text-lg text-gray-700 leading-relaxed mx-auto max-w-2xl">
+        Hi, I'm Amirhossein, a full-stack web developer based in Luxembourg. I specialize in .NET universe and enjoy building clean, scalable, and meaningful software. This is my space on the web where I share what I'm learning, creating, and exploring across technology, AI, and personal growth. I hope you enjoy your visit.
       </p>
     </main>
   </div>

@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About - Amirdaraee">
-  <div class="container">
-    <p></p>
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h2 class="text-3xl font-bold text-center uppercase text-gray-600 mb-6">
       About me
     </h2>
-    <!-- Icon Divider-->
+
+    <!-- Icon Divider -->
     <div class="divider-custom">
       <div class="divider-custom-line"></div>
       <div class="divider-custom-icon">
@@ -28,137 +28,28 @@ import Layout from '../layouts/Layout.astro';
       <div class="divider-custom-line"></div>
     </div>
 
-    <div class="row justify-content-center text-secondary">
-      <h1>Hello ! I'm Amir</h1>
-    </div>
-    <div class="row justify-content-center text-secondary">
-      <div class="col-12 mb-4 text-center">
-        <img
-          class="img-fluid"
-          src="/amirdaraee.png"
-          alt="amirdaraee"
-        />
-      </div>
-      <div class="col-12 text-justify">
-        <p>
-          I'm Amir, a full-stack web developer based in Luxembourg with nearly a decade of experience designing and building scalable, reliable web applications. My core expertise lies in the .NET ecosystem and modern front-end frameworks like Angular, with a focus on clean architecture, performance, and user-centered design.
-        </p>
-        <p>
-          I'm passionate about creating software that solves meaningful problems while maintaining technical excellence. My experience spans a range of industries and technologies, from enterprise systems to AI-enhanced applications, where I've contributed to architecture design, cloud integration, and continuous delivery. I enjoy learning new tools, improving processes, and finding elegant solutions to complex challenges.
-        </p>
-        <p>
-          Outside of work, I'm an avid reader of fantasy and sci-fi, a lifelong gamer, and someone who enjoys exploring new technologies and ideas. I believe in continuous growth — both personally and professionally — and value balance, curiosity, and creativity in everything I do.
-        </p>
-        <h4>About this website</h4>
-        <p>
-          This website was built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>,
-          a modern static site generator that prioritizes speed and simplicity. The design maintains a clean, professional aesthetic
-          while ensuring excellent performance and accessibility.
-        </p>
-      </div>
-    </div>
-    <div class="row justify-content-center text-secondary mt-5 mb-5">
-      <h3 class="col-12">My Stack and Toolbox:</h3>
-      <div class="row col-12 mt-5">
-        <div class="col-1">
-          <svg
-            class="bi bi-server"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13 2c0-1.105-2.239-2-5-2S3 .895 3 2s2.239 2 5 2 5-.895 5-2z"
-            />
-            <path
-              d="M13 3.75c-.322.24-.698.435-1.093.593C10.857 4.763 9.475 5 8 5s-2.857-.237-3.907-.657A4.881 4.881 0 013 3.75V6c0 1.105 2.239 2 5 2s5-.895 5-2V3.75z"
-            />
-            <path
-              d="M13 7.75c-.322.24-.698.435-1.093.593C10.857 8.763 9.475 9 8 9s-2.857-.237-3.907-.657A4.881 4.881 0 013 7.75V10c0 1.105 2.239 2 5 2s5-.895 5-2V7.75z"
-            />
-            <path
-              d="M13 11.75c-.322.24-.698.435-1.093.593-1.05.42-2.432.657-3.907.657s-2.857-.237-3.907-.657A4.883 4.883 0 013 11.75V14c0 1.105 2.239 2 5 2s5-.895 5-2v-2.25z"
-            />
-          </svg>
+    <div class="flex flex-col items-center text-gray-600 mt-8">
+      <h1 class="text-4xl font-semibold mb-8">Hello ! I'm Amir</h1>
+
+      <div class="w-full">
+        <div class="mb-8 text-center">
+          <img
+            class="max-w-full h-auto mx-auto"
+            src="/amirdaraee.png"
+            alt="amirdaraee"
+          />
         </div>
-        <div class="col-2">BackEnd:</div>
-        <div class="list-group list-group-flush col-9">
-          <a
-            class="list-group-item list-group-item-action"
-            href="https://dotnet.microsoft.com/apps/aspnet"
-            target="_blank"
-            rel="noopener noreferrer"
-            >ASP.NET</a
-          >
-        </div>
-      </div>
-      <div class="row col-12 mt-1">
-        <div class="col-1">
-          <svg
-            class="bi bi-window"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M14 2H2a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V3a1 1 0 00-1-1zM2 1a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V3a2 2 0 00-2-2H2z"
-              clip-rule="evenodd"
-            />
-            <path fill-rule="evenodd" d="M15 6H1V5h14v1z" clip-rule="evenodd" />
-            <path
-              d="M3 3.5a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0z"
-            />
-          </svg>
-        </div>
-        <div class="col-2">FrontEnd:</div>
-        <div class="list-group list-group-flush col-9">
-          <a
-            class="list-group-item list-group-item-action"
-            href="https://angular.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Angular</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            href="https://angularjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >AngularJS</a
-          >
-        </div>
-      </div>
-      <div class="row col-12 mt-1">
-        <div class="col-1">
-          <svg
-            class="bi bi-wrench"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M.102 2.223A3.004 3.004 0 003.78 5.897l6.341 6.252A3.003 3.003 0 0013 16a3 3 0 10-.851-5.878L5.897 3.781A3.004 3.004 0 002.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </div>
-        <div class="col-2">DevOps:</div>
-        <div class="list-group list-group-flush col-9">
-          <a
-            class="list-group-item list-group-item-action"
-            href="https://www.microsoft.com/en-us/windows-server"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Windows Server</a
-          >
+
+        <div class="space-y-6 text-gray-700 leading-relaxed">
+          <p>
+            I'm Amir, a full-stack web developer based in Luxembourg with nearly a decade of experience designing and building scalable, reliable web applications. My core expertise lies in the .NET ecosystem and modern front-end frameworks like Angular, with a focus on clean architecture, performance, and user-centered design.
+          </p>
+          <p>
+            I'm passionate about creating software that solves meaningful problems while maintaining technical excellence. My experience spans a range of industries and technologies, from enterprise systems to AI-enhanced applications, where I've contributed to architecture design, cloud integration, and continuous delivery. I enjoy learning new tools, improving processes, and finding elegant solutions to complex challenges.
+          </p>
+          <p>
+            Outside of work, I'm an avid reader of fantasy and sci-fi, a lifelong gamer, and someone who enjoys exploring new technologies and ideas. I believe in continuous growth — both personally and professionally — and value balance, curiosity, and creativity in everything I do.
+          </p>
         </div>
       </div>
     </div>

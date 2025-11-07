@@ -1,61 +1,82 @@
 ---
 const currentYear = new Date().getFullYear();
+
+interface Props {
+  showCopyright?: boolean;
+  compact?: boolean;
+}
+
+const { showCopyright = true, compact = false } = Astro.props;
+const paddingClass = compact ? 'py-4' : 'py-8';
 ---
 
-<footer id="footer" class="d-flex-column text-center">
-  <!--Social buttons-->
+<footer id="footer" class={`flex flex-col text-center ${paddingClass} bg-gray-50`}>
+  <!-- Social buttons -->
   <div class="text-center">
-    <h4>You can find me at</h4>
-    <ul class="list-unstyled list-inline">
-      <li class="list-inline-item">
+    <h4 class="text-xl font-semibold mb-4 text-gray-800">You can find me at</h4>
+    <ul class="flex justify-center items-center space-x-4 list-none">
+      <li>
         <a
           href="https://github.com/amirdaraee"
           target="_blank"
-          class="sbtn btn-large mx-1"
+          rel="noopener noreferrer"
+          class="text-gray-700 hover:text-gray-900 transition-colors duration-200"
           title="Github"
+          aria-label="Github"
         >
           <i class="fa fa-github fa-2x" aria-hidden="true"></i>
         </a>
       </li>
-      <li class="list-inline-item">
+      <li>
         <a
           href="https://www.linkedin.com/in/amirdaraee"
           target="_blank"
-          class="sbtn btn-large mx-1"
+          rel="noopener noreferrer"
+          class="text-gray-700 hover:text-blue-600 transition-colors duration-200"
           title="Linkedin"
+          aria-label="Linkedin"
         >
           <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
         </a>
       </li>
-      <li class="list-inline-item">
+      <li>
         <a
           href="https://twitter.com/amirdaraee"
           target="_blank"
-          class="sbtn btn-large mx-1"
+          rel="noopener noreferrer"
+          class="text-gray-700 hover:text-blue-400 transition-colors duration-200"
           title="Twitter"
+          aria-label="Twitter"
         >
           <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
         </a>
       </li>
-      <li class="list-inline-item">
+      <li>
         <a
           href="https://www.youtube.com/c/AmirhosseinDaraee"
           target="_blank"
-          class="sbtn btn-large mx-1"
+          rel="noopener noreferrer"
+          class="text-gray-700 hover:text-red-600 transition-colors duration-200"
           title="Youtube"
+          aria-label="Youtube"
         >
           <i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>
         </a>
       </li>
     </ul>
   </div>
-  <!--/.Social buttons-->
-  <hr class="mb-0" />
-  <!--Copyright-->
-  <div class="py-3 text-center">
-    Copyright
-    {currentYear}
-    <a href="https://amirdaraee.com">amirdaraee</a>
-  </div>
-  <!--/.Copyright-->
+  <!-- Social buttons end -->
+
+  {showCopyright && (
+    <>
+      <hr class="my-6 border-gray-300 w-full max-w-md mx-auto" />
+
+      <!-- Copyright -->
+      <div class="text-gray-600 text-sm">
+        Copyright © {currentYear}
+        <a href="https://amirdaraee.com" class="text-gray-900 hover:text-gray-600 font-medium">amirdaraee</a>
+      </div>
+      <!-- Copyright end -->
+    </>
+  )}
 </footer>

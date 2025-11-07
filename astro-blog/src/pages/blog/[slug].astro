@@ -54,57 +54,55 @@ const structuredData = {
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <article class="container my-5">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <header class="mb-4">
-          <h1 class="mb-3">{post.data.title}</h1>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-3xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4 text-gray-900">{post.data.title}</h1>
 
-          <div class="text-muted mb-3">
-            <time datetime={post.data.date.toISOString()}>
-              {post.data.date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-            {' '} • {' '}
-            <span>By {post.data.author}</span>
+        <div class="text-gray-500 mb-4 text-sm">
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
+          {' '} • {' '}
+          <span>By {post.data.author}</span>
+        </div>
+
+        {post.data.keywords && post.data.keywords.length > 0 && (
+          <div class="mb-4 flex flex-wrap gap-2">
+            {post.data.keywords.map((keyword: string) => (
+              <span class="inline-block px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full">{keyword}</span>
+            ))}
           </div>
+        )}
 
-          {post.data.keywords && post.data.keywords.length > 0 && (
-            <div class="mb-3">
-              {post.data.keywords.map((keyword: string) => (
-                <span class="badge bg-secondary me-2">{keyword}</span>
-              ))}
-            </div>
-          )}
+        {post.data.photo && (
+          <img
+            src={`/${post.data.photo}`}
+            alt={post.data.title}
+            class="w-full h-auto rounded-lg mb-4"
+          />
+        )}
+        {post.data.imgCredit && (
+          <small class="text-gray-500 block mb-6 text-sm">
+            Image credit: {post.data.imgCredit}
+          </small>
+        )}
+      </header>
 
-          {post.data.photo && (
-            <img
-              src={`/${post.data.photo}`}
-              alt={post.data.title}
-              class="img-fluid mb-3"
-            />
-          )}
-          {post.data.imgCredit && (
-            <small class="text-muted d-block mb-4">
-              Image credit: {post.data.imgCredit}
-            </small>
-          )}
-        </header>
+      <div class="prose">
+        <Content />
+      </div>
 
-        <div class="prose">
-          <Content />
-        </div>
+      <hr class="my-10 border-gray-300" />
 
-        <hr class="my-5" />
-
-        <div class="text-center">
-          <a href="/blog" class="btn btn-outline-primary">
-            ← Back to Blog
-          </a>
-        </div>
+      <div class="text-center">
+        <a href="/blog" class="inline-block px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">
+          ← Back to Blog
+        </a>
       </div>
     </div>
   </article>
