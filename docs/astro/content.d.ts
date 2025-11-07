@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"NamewiseUsageGuide.md": {
+	id: "NamewiseUsageGuide.md";
+  slug: "namewise_usage_guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "TypeScriptFatArrowAndThisKeyword.md": {
 	id: "TypeScriptFatArrowAndThisKeyword.md";
   slug: "typescript_fatarrow_and_this_keyword";
