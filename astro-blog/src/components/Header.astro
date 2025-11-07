@@ -94,35 +94,6 @@
     transform: translateX(-20px);
   }
 
-<style>
-  .nav-link {
-    @apply relative inline-block px-4 py-2 text-gray-900 font-medium uppercase tracking-wide no-underline transition-colors duration-200;
-  }
-
-  .nav-link:hover {
-    @apply text-gray-600;
-  }
-
-  /* Bracket hover effect */
-  .nav-links .nav-link::before,
-  .nav-links .nav-link::after {
-    display: inline-block;
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.2s;
-  }
-
-  .nav-links .nav-link::before {
-    content: '[';
-    margin-right: 10px;
-    transform: translateX(20px);
-  }
-
-  .nav-links .nav-link::after {
-    content: ']';
-    margin-left: 10px;
-    transform: translateX(-20px);
-  }
-
   .nav-links .nav-link:hover::before,
   .nav-links .nav-link:hover::after,
   .nav-links .nav-link:focus::before,
