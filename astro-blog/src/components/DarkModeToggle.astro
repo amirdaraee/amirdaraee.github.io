@@ -39,9 +39,9 @@
   // Initialize theme on page load
   function initTheme() {
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    // Default to dark mode unless explicitly set to light
+    if (savedTheme !== 'light') {
       setTheme('dark');
     } else {
       setTheme('light');
