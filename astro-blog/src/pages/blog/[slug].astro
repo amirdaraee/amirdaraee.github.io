@@ -59,7 +59,7 @@ const structuredData = {
       <header class="mb-8">
         <h1 id="article-title" class="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">{post.data.title}</h1>
 
-        <div class="text-gray-500 dark:text-gray-400 mb-4 text-sm">
+        <div class="text-gray-500 dark:text-gray-400 mb-4 text-sm" role="doc-subtitle">
           <time datetime={post.data.date.toISOString()} aria-label={`Published on ${post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}>
             {post.data.date.toLocaleDateString('en-US', {
               year: 'numeric',
