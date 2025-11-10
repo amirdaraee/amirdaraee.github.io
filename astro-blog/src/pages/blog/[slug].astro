@@ -19,7 +19,7 @@ const structuredData = {
   "@type": "BlogPosting",
   "headline": post.data.title,
   "description": post.data.description,
-  "image": post.data.photo ? `https://amirdaraee.com/${post.data.photo}` : "https://amirdaraee.com/logo.png",
+  "image": post.data.photo ? `https://amirdaraee.com/${post.data.photo.replace(/\.(png|jpg|jpeg)$/, '.webp')}` : "https://amirdaraee.com/logo.webp",
   "datePublished": post.data.date.toISOString(),
   "dateModified": post.data.date.toISOString(),
   "author": {
@@ -32,7 +32,7 @@ const structuredData = {
     "name": "Amir Daraee",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://amirdaraee.com/logo.png"
+      "url": "https://amirdaraee.com/logo.webp"
     }
   },
   "keywords": post.data.keywords?.join(', ') || '',
@@ -80,11 +80,14 @@ const structuredData = {
         )}
 
         {post.data.photo && (
-          <img
-            src={`/${post.data.photo}`}
-            alt={post.data.title}
-            class="w-full h-auto rounded-lg mb-4"
-          />
+          <picture>
+            <source srcset={`/${post.data.photo.replace(/\.(png|jpg|jpeg)$/, '.webp')}`} type="image/webp">
+            <img
+              src={`/${post.data.photo}`}
+              alt={`Featured image for ${post.data.title}`}
+              class="w-full h-auto rounded-lg mb-4"
+            />
+          </picture>
         )}
         {post.data.imgCredit && (
           <small class="text-gray-500 dark:text-gray-400 block mb-6 text-sm">

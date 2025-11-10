@@ -7,7 +7,10 @@ import DarkModeToggle from './DarkModeToggle.astro';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <nav class="flex items-center justify-between">
       <a href="/" class="flex-shrink-0">
-        <img src="/logo.png" alt="amirdaraee" class="h-10 w-auto" />
+        <picture>
+          <source srcset="/logo.webp" type="image/webp">
+          <img src="/logo.png" alt="Amirdaraee logo" class="h-10 w-auto" />
+        </picture>
       </a>
 
       <!-- Desktop menu and dark mode toggle -->

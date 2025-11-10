@@ -1,8 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Structured Data for Person Schema
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Amirhossein Daraee",
+  "alternateName": "Amir Daraee",
+  "url": "https://amirdaraee.com",
+  "image": "https://amirdaraee.com/amirdaraee.webp",
+  "jobTitle": "Full-Stack Web Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Independent"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Luxembourg",
+    "addressCountry": "LU"
+  },
+  "description": "Full-stack web developer based in Luxembourg with nearly a decade of experience designing and building scalable, reliable web applications. Core expertise in .NET ecosystem and modern front-end frameworks like Angular.",
+  "knowsAbout": [".NET", "Angular", "C#", "TypeScript", "Blazor", "Clean Architecture", "Web Development"],
+  "sameAs": [
+    "https://twitter.com/amirdaraee",
+    "https://github.com/amirdaraee"
+  ]
+};
 ---
 
 <Layout title="About - Amirdaraee">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h2 class="text-3xl font-bold text-center uppercase text-gray-600 dark:text-gray-400 mb-6">
       About me
@@ -33,11 +60,14 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="w-full">
         <div class="mb-8 text-center">
-          <img
-            class="max-w-full h-auto mx-auto"
-            src="/amirdaraee.png"
-            alt="amirdaraee"
-          />
+          <picture>
+            <source srcset="/amirdaraee.webp" type="image/webp">
+            <img
+              class="max-w-full h-auto mx-auto"
+              src="/amirdaraee.png"
+              alt="Amirhossein Daraee - Full-stack web developer with nearly a decade of experience in .NET and Angular"
+            />
+          </picture>
         </div>
 
         <div class="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
