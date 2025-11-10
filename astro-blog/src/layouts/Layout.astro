@@ -60,6 +60,7 @@ const {
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
 
     <!-- Dark mode initialization script - prevents flash -->
     <script is:inline>
@@ -72,6 +73,16 @@ const {
           document.documentElement.classList.add('dark');
         }
       })();
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LLXG680BZ"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LLXG680BZ');
     </script>
 
     <title>{title}</title>
