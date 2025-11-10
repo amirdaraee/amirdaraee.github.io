@@ -1,16 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Structured Data for Person Schema
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Amirhossein Daraee",
+  "alternateName": "Amir Daraee",
+  "url": "https://amirdaraee.com",
+  "image": "https://amirdaraee.com/Amirhossein-Daraee.webp",
+  "jobTitle": "Full-Stack Web Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Independent"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Luxembourg",
+    "addressCountry": "LU"
+  },
+  "description": "Full-stack web developer based in Luxembourg specializing in .NET universe and building clean, scalable, and meaningful software.",
+  "knowsAbout": [".NET", "Angular", "C#", "TypeScript", "Blazor", "Clean Architecture", "Web Development", "AI"],
+  "sameAs": [
+    "https://twitter.com/amirdaraee",
+    "https://github.com/amirdaraee"
+  ]
+};
 ---
 
 <Layout title="Amirdaraee - Full-Stack Web Developer" showCopyright={false} compactFooter={true}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <div class="absolute inset-0 flex items-center justify-center">
     <main role="main" class="text-center px-4 sm:px-6 lg:px-8">
       <h1 class="mb-4">
-        <img
-          class="rounded-full mx-auto w-64 sm:w-64 md:w-96"
-          src="/Amirhossein-Daraee.png"
-          alt="Amirdaraee"
-        />
+        <picture>
+          <source srcset="/Amirhossein-Daraee.webp" type="image/webp">
+          <img
+            class="rounded-full mx-auto w-64 sm:w-64 md:w-96"
+            src="/Amirhossein-Daraee.png"
+            alt="Amirhossein Daraee - Full-stack web developer specializing in .NET and Angular"
+          />
+        </picture>
       </h1>
       <p class="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mx-auto max-w-2xl">
         Hi, I'm Amirhossein, a full-stack web developer based in Luxembourg. I specialize in .NET universe and enjoy building clean, scalable, and meaningful software. This is my space on the web where I share what I'm learning, creating, and exploring across technology, AI, and personal growth. I hope you enjoy your visit.
