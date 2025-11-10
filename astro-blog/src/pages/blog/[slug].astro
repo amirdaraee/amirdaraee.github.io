@@ -54,13 +54,13 @@ const structuredData = {
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12" role="article" aria-labelledby="article-title" lang={post.data.language || 'en'}>
     <div class="max-w-3xl mx-auto">
       <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">{post.data.title}</h1>
+        <h1 id="article-title" class="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">{post.data.title}</h1>
 
-        <div class="text-gray-500 dark:text-gray-400 mb-4 text-sm">
-          <time datetime={post.data.date.toISOString()}>
+        <div class="text-gray-500 dark:text-gray-400 mb-4 text-sm" role="doc-subtitle">
+          <time datetime={post.data.date.toISOString()} aria-label={`Published on ${post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}>
             {post.data.date.toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -68,45 +68,58 @@ const structuredData = {
             })}
           </time>
           {' '} • {' '}
-          <span>By {post.data.author}</span>
+          <span aria-label="Author">By {post.data.author}</span>
         </div>
 
         {post.data.keywords && post.data.keywords.length > 0 && (
-          <div class="mb-4 flex flex-wrap gap-2">
-            {post.data.keywords.map((keyword: string) => (
-              <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full">{keyword}</span>
-            ))}
-          </div>
+          <nav class="mb-4" aria-label="Article topics">
+            <ul class="flex flex-wrap gap-2 list-none p-0 m-0">
+              {post.data.keywords.map((keyword: string) => (
+                <li>
+                  <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full" role="note">{keyword}</span>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
 
         {post.data.photo && (
-          <picture>
-            <source srcset={`/${post.data.photo.replace(/\.(png|jpg|jpeg)$/, '.webp')}`} type="image/webp">
-            <img
-              src={`/${post.data.photo}`}
-              alt={`Featured image for ${post.data.title}`}
-              class="w-full h-auto rounded-lg mb-4"
-            />
-          </picture>
-        )}
-        {post.data.imgCredit && (
-          <small class="text-gray-500 dark:text-gray-400 block mb-6 text-sm">
-            Image credit: {post.data.imgCredit}
-          </small>
+          <figure class="mb-4">
+            <picture>
+              <source srcset={`/${post.data.photo.replace(/\.(png|jpg|jpeg)$/, '.webp')}`} type="image/webp">
+              <img
+                src={`/${post.data.photo}`}
+                alt={`Featured image for ${post.data.title}`}
+                class="w-full h-auto rounded-lg"
+                loading="eager"
+                width="800"
+                height="400"
+              />
+            </picture>
+            {post.data.imgCredit && (
+              <figcaption class="text-gray-500 dark:text-gray-400 mt-2 text-sm">
+                Image credit: {post.data.imgCredit}
+              </figcaption>
+            )}
+          </figure>
         )}
       </header>
 
-      <div class="prose dark:prose-invert">
+      <div class="prose dark:prose-invert" role="main" id="main-content">
         <Content />
       </div>
 
-      <hr class="my-10 border-gray-300 dark:border-gray-700" />
+      <hr class="my-10 border-gray-300 dark:border-gray-700" role="separator" />
 
-      <div class="text-center">
-        <a href="/blog" class="inline-block px-6 py-3 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-md hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-colors duration-200">
+      <nav class="text-center" aria-label="Post navigation">
+        <a
+          href="/blog"
+          class="inline-block px-6 py-3 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-md hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-colors duration-200"
+          aria-label="Return to blog post listing"
+        >
           ← Back to Blog
         </a>
-      </div>
+      </nav>
     </div>
   </article>
 </Layout>
@@ -257,5 +270,70 @@ const structuredData = {
 
   .dark .prose th {
     background-color: #374151;
+  }
+
+  /* Print styles for better PDF export and printing */
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+
+    article {
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+
+    .prose {
+      color: black !important;
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+      color: black !important;
+      page-break-after: avoid;
+    }
+
+    .prose a {
+      color: #0066cc !important;
+      text-decoration: underline;
+    }
+
+    .prose a[href]:after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+
+    .prose pre,
+    .prose code {
+      background-color: #f5f5f5 !important;
+      color: black !important;
+      border: 1px solid #ddd;
+    }
+
+    .prose img {
+      max-width: 100% !important;
+      page-break-inside: avoid;
+    }
+
+    .prose table {
+      page-break-inside: avoid;
+    }
+
+    /* Hide navigation elements when printing */
+    nav[aria-label="Post navigation"],
+    header > nav,
+    footer {
+      display: none !important;
+    }
+
+    hr {
+      border-color: #999 !important;
+    }
   }
 </style>
