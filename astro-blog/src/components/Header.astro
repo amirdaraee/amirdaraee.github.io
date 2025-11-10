@@ -4,8 +4,13 @@ import DarkModeToggle from './DarkModeToggle.astro';
 ---
 
 <header class="bg-white dark:bg-gray-900 w-full z-50 py-2 transition-colors duration-200">
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-to-content">
+    Skip to main content
+  </a>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between">
+    <nav class="flex items-center justify-between" aria-label="Main navigation">
       <a href="/" class="flex-shrink-0">
         <picture>
           <source srcset="/logo.webp" type="image/webp">
@@ -76,6 +81,27 @@ import DarkModeToggle from './DarkModeToggle.astro';
 </script>
 
 <style>
+  /* Skip to content link - hidden until focused */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    z-index: 100;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+    transition: top 0.3s;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+    outline: 3px solid #0056b3;
+    outline-offset: 2px;
+  }
+
   .nav-link {
     @apply relative inline-block px-4 py-2 text-gray-900 dark:text-gray-100 font-medium uppercase tracking-wide no-underline transition-colors duration-200;
   }
