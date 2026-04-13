@@ -1,6 +1,0 @@
-# robots.txt for amirdaraee.com
-User-agent: *
-Allow: /
-
-# Sitemaps
-Sitemap: https://amirdaraee.com/sitemap-index.xml

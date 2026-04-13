@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/docs
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -47,3 +48,4 @@ Thumbs.db
 scully.log
 .scully/*
 .vscode/settings.json
+CLAUDE.md
