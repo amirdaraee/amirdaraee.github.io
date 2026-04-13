@@ -1,17 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog');
   return blogPosts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Structured Data for SEO
 const structuredData = {
@@ -38,7 +38,7 @@ const structuredData = {
   "keywords": post.data.keywords?.join(', ') || '',
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://amirdaraee.com/blog/${post.slug}`
+    "@id": `https://amirdaraee.com/blog/${post.id}`
   }
 };
 ---
