@@ -1,5 +1,6 @@
 ---
 import SEO from "../components/SEO.astro";
+import Analytics from "../components/Analytics.astro";
 ---
 
 <!doctype html>
@@ -36,6 +37,17 @@ import SEO from "../components/SEO.astro";
           document.documentElement.classList.add('dark');
         }
       })();
+    </script>
+
+    <!-- Google Analytics -->
+    <Analytics contentGroup="404" />
+    <script is:inline>
+      // Report which URL 404'd and where the visitor came from,
+      // so broken inbound/internal links surface in GA.
+      window.gtag?.('event', 'page_not_found', {
+        page_location: window.location.href,
+        referrer: document.referrer || '(direct)',
+      });
     </script>
 
     <title>404 - Page Not Found</title>

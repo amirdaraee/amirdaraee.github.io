@@ -49,3 +49,4 @@ scully.log
 .scully/*
 .vscode/settings.json
 CLAUDE.md
+.playwright-mcp/

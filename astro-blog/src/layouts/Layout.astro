@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
+import Analytics from '../components/Analytics.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -77,14 +78,11 @@ const {
     </script>
 
     <!-- Google Analytics -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4LLXG680BZ"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-4LLXG680BZ');
-    </script>
+    <Analytics
+      contentGroup={type === 'article' ? 'blog-post' : 'page'}
+      author={author}
+      tags={tags}
+    />
 
     <title>{title}</title>
   </head>
