@@ -183,6 +183,40 @@ const structuredData = {
   }
 </script>
 
+<script>
+  // Add a copy-to-clipboard button to every code block
+  const svg = (path: string) =>
+    `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${path}</svg>`;
+  const copyIcon = svg('<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>');
+  const checkIcon = svg('<path d="M20 6 9 17l-5-5"/>');
+  const failIcon = svg('<path d="M18 6 6 18M6 6l12 12"/>');
+
+  document.querySelectorAll('pre.astro-code').forEach((pre) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'code-copy-btn';
+    btn.innerHTML = copyIcon;
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.title = 'Copy code';
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code')?.innerText ?? '';
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.innerHTML = checkIcon;
+        btn.classList.add('copied');
+      } catch {
+        btn.innerHTML = failIcon;
+        btn.classList.add('failed');
+      }
+      setTimeout(() => {
+        btn.innerHTML = copyIcon;
+        btn.classList.remove('copied', 'failed');
+      }, 2000);
+    });
+    pre.appendChild(btn);
+  });
+</script>
+
 <style is:global>
   .prose {
     max-width: 100%;
@@ -245,11 +279,50 @@ const structuredData = {
   }
 
   .prose pre {
+    position: relative;
     background-color: #2d2d2d;
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
     margin: 1.5rem 0;
+  }
+
+  .code-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.375rem;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #374151;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .code-copy-btn.copied {
+    color: #059669;
+  }
+
+  .code-copy-btn.failed {
+    color: #dc2626;
+  }
+
+  .dark .code-copy-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(31, 41, 55, 0.9);
+    color: #d1d5db;
+  }
+
+  .dark .code-copy-btn.copied {
+    color: #34d399;
+  }
+
+  .dark .code-copy-btn.failed {
+    color: #f87171;
   }
 
   .dark .prose pre {
@@ -387,7 +460,8 @@ const structuredData = {
     /* Hide navigation elements when printing */
     nav[aria-label="Post navigation"],
     header > nav,
-    footer {
+    footer,
+    .code-copy-btn {
       display: none !important;
     }
 
