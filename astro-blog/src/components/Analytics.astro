@@ -1,6 +1,8 @@
 ---
 // Google Analytics 4. Renders nothing outside production builds so dev and
 // preview traffic never reaches the property.
+import { SITE_CONFIG } from '../config';
+
 interface Props {
   contentGroup?: string | undefined;
   author?: string | undefined;
@@ -8,10 +10,11 @@ interface Props {
 }
 
 const { contentGroup = 'page', author, tags } = Astro.props;
-const GA_ID = 'G-4LLXG680BZ';
+const GA_ID = SITE_CONFIG.googleAnalyticsId;
+const enabled = import.meta.env.PROD && GA_ID && SITE_CONFIG.features.analytics;
 ---
 
-{import.meta.env.PROD && (
+{enabled && (
   <>
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
     <script is:inline define:vars={{ GA_ID, contentGroup, author, tags }}>

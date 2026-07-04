@@ -3,9 +3,26 @@
 /* Class-based dark mode (matches dark class on <html>) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom theme tokens */
+/* Custom theme tokens (Tailwind v4 reads --font-sans for the font-sans utility) */
 @theme {
-  --font-family-sans: "Operator Mono Book", -apple-system, BlinkMacSystemFont,
+  --font-sans: "Operator Mono Book", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
+}
+
+/* Reserve scrollbar space on every page so centered content (header nav,
+   containers) doesn't shift when navigating between short and long pages */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Shiki dual-theme code blocks: switch to the dark palette when the `dark`
+   class is on <html> (the light palette is inlined by default) */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }
