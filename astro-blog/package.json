@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.0.6",
+    "rehype-external-links": "^3.0.0",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
