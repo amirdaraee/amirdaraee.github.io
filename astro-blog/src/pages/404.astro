@@ -1,17 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
 import Analytics from "../components/Analytics.astro";
 import '../styles/global.css';
-
-const latestPosts = (await getCollection('blog', ({ data }) => data.published === true))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
-
-const formatDate = (date: Date) =>
-  date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 
 <!doctype html>
@@ -40,9 +30,6 @@ const formatDate = (date: Date) =>
     <!-- Self-hosted Operator Mono font faces -->
     <link rel="stylesheet" href="/fonts/operator-mono.css" />
 
-    <!-- Font Awesome (header and footer icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <!-- Dark mode initialization script - prevents flash -->
     <script is:inline>
       // Initialize theme before page renders to prevent flash
@@ -69,74 +56,39 @@ const formatDate = (date: Date) =>
 
     <title>404 - Page Not Found</title>
   </head>
-  <body class="flex flex-col min-h-screen font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
-    <Header />
-    <main class="flex-grow w-full px-6 py-12 sm:py-16" role="main" aria-label="Page not found">
-      <div class="mx-auto w-full max-w-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-        <h1
-          class="mb-8 flex items-center justify-center gap-1 text-7xl font-bold leading-none text-blue-600 sm:text-8xl sm:gap-2 dark:text-blue-400"
-          aria-label="Error 404"
-        >
-          <span aria-hidden="true">4</span>
-          <picture aria-hidden="true">
-            <source
-              srcset="/Amirhossein-Daraee-404-blink.webp"
-              type="image/webp"
-              media="(prefers-reduced-motion: no-preference)"
-            />
-            <img
-              src="/Amirhossein-Daraee-404.webp"
-              alt=""
-              width="800"
-              height="800"
-              class="block h-[0.9em] w-[0.9em] rounded-full object-cover"
-              fetchpriority="high"
-            />
-          </picture>
-          <span aria-hidden="true">4</span>
-        </h1>
+  <body class="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <main class="min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center" role="main" aria-label="Page not found">
+      <h1
+        class="flex items-center justify-center gap-1 text-7xl font-bold leading-none text-blue-600 sm:text-8xl sm:gap-2 dark:text-blue-400"
+        aria-label="Error 404"
+      >
+        <span aria-hidden="true">4</span>
+        <picture aria-hidden="true">
+          <source
+            srcset="/Amirhossein-Daraee-404-blink.webp"
+            type="image/webp"
+            media="(prefers-reduced-motion: no-preference)"
+          />
+          <img
+            src="/Amirhossein-Daraee-404.webp"
+            alt=""
+            width="800"
+            height="800"
+            class="block h-[0.9em] w-[0.9em] rounded-full object-cover"
+            fetchpriority="high"
+          />
+        </picture>
+        <span aria-hidden="true">4</span>
+      </h1>
 
-        <p class="mb-4">
-          Nothing lives at this address. You followed a link that goes nowhere, or typed
-          something that was never a page. I would love to blame you, but it might be me.
-        </p>
+      <p class="text-lg text-gray-600 dark:text-gray-400">This page doesn't exist.</p>
 
-        <p class="mb-2 text-gray-500">What probably happened:</p>
-        <ul class="mb-8 space-y-1">
-          <li>The link has a typo in it.</li>
-          <li>I renamed the page or took it down.</li>
-          <li>It never existed and somebody was optimistic.</li>
-        </ul>
-
-        <p class="mb-2 text-gray-500">Try one of these instead:</p>
-        <ul class="mb-8 space-y-1">
-          <li><a href="/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Home</a>, where it all starts.</li>
-          <li><a href="/blog/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>, everything I have written.</li>
-          <li><a href="/portfolio/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Portfolio</a>, the things I have built.</li>
-          <li><a href="/about/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">About</a>, who I am.</li>
-          <li><a href="/uses/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Uses</a>, my setup and tools.</li>
-        </ul>
-
-        {latestPosts.length > 0 && (
-          <>
-            <p class="mb-2 text-gray-500">Or read something recent:</p>
-            <ul class="mb-8 space-y-1">
-              {latestPosts.map((post) => (
-                <li>
-                  <span class="text-gray-500">{formatDate(post.data.date)}</span>
-                  {' '}
-                  <a href={`/blog/${post.id}/`} class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">{post.data.title}</a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-
-        <p class="text-gray-500">
-          If a link on this site is broken, <a href="/contact/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">tell me</a> and I will fix it.
-        </p>
-      </div>
+      <a
+        href="/"
+        class="inline-block rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white transition-colors duration-200 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+      >
+        ← Take me home
+      </a>
     </main>
-    <Footer />
   </body>
 </html>
