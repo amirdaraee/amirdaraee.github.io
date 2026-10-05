@@ -50,3 +50,4 @@ scully.log
 .vscode/settings.json
 CLAUDE.md
 .playwright-mcp/
+.serena/
