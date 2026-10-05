@@ -8,7 +8,7 @@ import '../styles/global.css';
 
 const latestPosts = (await getCollection('blog', ({ data }) => data.published === true))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+  .slice(0, 5);
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
@@ -71,62 +71,70 @@ const formatDate = (date: Date) =>
   </head>
   <body class="flex flex-col min-h-screen font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
     <Header />
-    <main class="flex-grow w-full flex items-center justify-center px-4 py-12 sm:py-16" role="main" aria-label="Page not found">
-      <div class="w-full max-w-2xl text-center">
-        <div class="text-7xl sm:text-8xl mb-6 motion-safe:animate-bounce" aria-hidden="true">🤷‍♂️</div>
-
-        <h1 class="text-6xl sm:text-8xl font-bold mb-4" aria-label="Error 404">
-          <span class="text-blue-600 dark:text-blue-400">4</span><span class="text-gray-300 dark:text-gray-700">0</span><span class="text-blue-600 dark:text-blue-400">4</span>
+    <main class="flex-grow w-full px-6 py-12 sm:py-16" role="main" aria-label="Page not found">
+      <div class="mx-auto w-full max-w-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h1
+          class="mb-8 flex items-center justify-center gap-1 text-7xl font-bold leading-none text-blue-600 sm:text-8xl sm:gap-2 dark:text-blue-400"
+          aria-label="Error 404"
+        >
+          <span aria-hidden="true">4</span>
+          <picture aria-hidden="true">
+            <source
+              srcset="/Amirhossein-Daraee-404-blink.webp"
+              type="image/webp"
+              media="(prefers-reduced-motion: no-preference)"
+            />
+            <img
+              src="/Amirhossein-Daraee-404.webp"
+              alt=""
+              width="800"
+              height="800"
+              class="block h-[0.9em] w-[0.9em] rounded-full object-cover"
+              fetchpriority="high"
+            />
+          </picture>
+          <span aria-hidden="true">4</span>
         </h1>
 
-        <p class="text-2xl sm:text-3xl font-light text-gray-600 dark:text-gray-400 mb-3">
-          Oops! Nothing here
-        </p>
-        <p class="text-base text-gray-500 mb-8">
-          This page went on vacation 🏖️ The link may be broken, or I moved it.
+        <p class="mb-4">
+          Nothing lives at this address. You followed a link that goes nowhere, or typed
+          something that was never a page. I would love to blame you, but it might be me.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 mb-14">
-          <a
-            href="/"
-            class="inline-block rounded-lg bg-blue-600 px-5 py-2.5 font-medium text-white transition-colors duration-200 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
-          >
-            ← Take me home
-          </a>
-          <a
-            href="/blog/"
-            class="inline-block rounded-lg border border-gray-300 px-5 py-2.5 font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800"
-          >
-            Read the blog
-          </a>
-          <a
-            href="/portfolio/"
-            class="inline-block rounded-lg border border-gray-300 px-5 py-2.5 font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800"
-          >
-            See my projects
-          </a>
-        </div>
+        <p class="mb-2 text-gray-500">What probably happened:</p>
+        <ul class="mb-8 space-y-1">
+          <li>The link has a typo in it.</li>
+          <li>I renamed the page or took it down.</li>
+          <li>It never existed and somebody was optimistic.</li>
+        </ul>
+
+        <p class="mb-2 text-gray-500">Try one of these instead:</p>
+        <ul class="mb-8 space-y-1">
+          <li><a href="/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Home</a>, where it all starts.</li>
+          <li><a href="/blog/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>, everything I have written.</li>
+          <li><a href="/portfolio/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Portfolio</a>, the things I have built.</li>
+          <li><a href="/about/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">About</a>, who I am.</li>
+          <li><a href="/uses/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">Uses</a>, my setup and tools.</li>
+        </ul>
 
         {latestPosts.length > 0 && (
-          <section class="text-left" aria-labelledby="latest-posts-heading">
-            <h2 id="latest-posts-heading" class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">
-              While you're here
-            </h2>
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+          <>
+            <p class="mb-2 text-gray-500">Or read something recent:</p>
+            <ul class="mb-8 space-y-1">
               {latestPosts.map((post) => (
                 <li>
-                  <a
-                    href={`/blog/${post.id}/`}
-                    class="flex flex-col gap-1 px-4 py-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
-                  >
-                    <span class="font-medium text-gray-900 dark:text-gray-100">{post.data.title}</span>
-                    <span class="shrink-0 text-sm text-gray-500">{formatDate(post.data.date)}</span>
-                  </a>
+                  <span class="text-gray-500">{formatDate(post.data.date)}</span>
+                  {' '}
+                  <a href={`/blog/${post.id}/`} class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">{post.data.title}</a>
                 </li>
               ))}
             </ul>
-          </section>
+          </>
         )}
+
+        <p class="text-gray-500">
+          If a link on this site is broken, <a href="/contact/" class="underline underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400">tell me</a> and I will fix it.
+        </p>
       </div>
     </main>
     <Footer />
