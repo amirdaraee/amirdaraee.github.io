@@ -1,0 +1,10 @@
+---
+// The X report, embedded as built. Regenerate the two fragments with
+// tools/export_for_blog.py in the x-analysis repo; theme.css is hand-written.
+import report from '../embeds/x-analysis/report.html?raw';
+import '../embeds/x-analysis/report.css';
+import '../embeds/x-analysis/theme.css';
+---
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" />
+<div class="xa" set:html={report} />

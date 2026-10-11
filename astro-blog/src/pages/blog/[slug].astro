@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { slugifyTag } from '../../utils/tags';
 import { readingTime } from '../../utils/readingTime';
+import XAnalysisReport from '../../components/XAnalysisReport.astro';
+import xAnalysisHtml from '../../embeds/x-analysis/report.html?raw';
 
 const base = import.meta.env.BASE_URL;
 
@@ -42,7 +44,12 @@ export async function getStaticPaths() {
 
 const { post, prev, next, related } = Astro.props;
 const { Content } = await render(post);
-const minutes = readingTime(post.body ?? '');
+// An embedded report is part of the reading: count its paragraphs, headings and lists,
+// not its chart labels, script or data.
+const embedText = post.data.embed === 'x-analysis'
+  ? [...xAnalysisHtml.replace(/<script[\s\S]*?<\/script>/g, ' ').matchAll(/<(p|li|h2|h3)\b[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => (m[2] ?? '').replace(/<[^>]+>/g, ' ')).join(' ')
+  : '';
+const minutes = readingTime(`${post.body ?? ''} ${embedText}`);
 
 // Structured Data for SEO
 const structuredData = {
@@ -144,6 +151,8 @@ const structuredData = {
       <div class="prose dark:prose-invert" role="main" id="main-content">
         <Content />
       </div>
+
+      {post.data.embed === 'x-analysis' && <XAnalysisReport />}
 
       <hr class="my-10 border-gray-300 dark:border-gray-700" role="separator" />
 
