@@ -1,0 +1,10 @@
+---
+// The France protests report, embedded as built. Regenerate the two fragments with
+// tools/export_for_blog.py in the x-analysis repo; the theme is shared with XAnalysisReport.
+import report from '../embeds/france-protests/report.html?raw';
+import '../embeds/france-protests/report.css';
+import '../embeds/x-analysis/theme.css';
+---
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" />
+<div class="xa" set:html={report} />

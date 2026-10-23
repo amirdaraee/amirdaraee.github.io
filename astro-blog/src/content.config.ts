@@ -14,7 +14,7 @@ const blog = defineCollection({
     imgCredit: z.string().optional(),
     keywords: z.array(z.string()).optional(),
     language: z.string().default('en'),
-    embed: z.enum(['x-analysis']).optional(),
+    embed: z.enum(['x-analysis', 'france-protests']).optional(),
   }),
 });
 

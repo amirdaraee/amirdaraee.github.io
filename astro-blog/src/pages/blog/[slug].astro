@@ -4,7 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import { slugifyTag } from '../../utils/tags';
 import { readingTime } from '../../utils/readingTime';
 import XAnalysisReport from '../../components/XAnalysisReport.astro';
+import FranceProtestsReport from '../../components/FranceProtestsReport.astro';
 import xAnalysisHtml from '../../embeds/x-analysis/report.html?raw';
+import franceProtestsHtml from '../../embeds/france-protests/report.html?raw';
 
 const base = import.meta.env.BASE_URL;
 
@@ -46,9 +48,9 @@ const { post, prev, next, related } = Astro.props;
 const { Content } = await render(post);
 // An embedded report is part of the reading: count its paragraphs, headings and lists,
 // not its chart labels, script or data.
-const embedText = post.data.embed === 'x-analysis'
-  ? [...xAnalysisHtml.replace(/<script[\s\S]*?<\/script>/g, ' ').matchAll(/<(p|li|h2|h3)\b[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => (m[2] ?? '').replace(/<[^>]+>/g, ' ')).join(' ')
-  : '';
+const embedHtml = { 'x-analysis': xAnalysisHtml, 'france-protests': franceProtestsHtml };
+const embedSource = post.data.embed ? embedHtml[post.data.embed] : '';
+const embedText = [...embedSource.replace(/<script[\s\S]*?<\/script>/g, ' ').matchAll(/<(p|li|h2|h3)\b[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => (m[2] ?? '').replace(/<[^>]+>/g, ' ')).join(' ');
 const minutes = readingTime(`${post.body ?? ''} ${embedText}`);
 
 // Structured Data for SEO
@@ -153,6 +155,7 @@ const structuredData = {
       </div>
 
       {post.data.embed === 'x-analysis' && <XAnalysisReport />}
+      {post.data.embed === 'france-protests' && <FranceProtestsReport />}
 
       <hr class="my-10 border-gray-300 dark:border-gray-700" role="separator" />
 

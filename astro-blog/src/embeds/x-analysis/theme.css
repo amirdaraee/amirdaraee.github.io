@@ -42,3 +42,6 @@
 /* Native controls (the label dropdown) follow the site theme. */
 .xa { color-scheme: light; }
 .dark .xa { color-scheme: dark; }
+
+/* Word cloud: words carry a dark navy inline colour; invert it to light blue on the dark theme. */
+.dark .xa .cloud .word { filter: invert(1) hue-rotate(180deg); }
